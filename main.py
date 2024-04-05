@@ -1,13 +1,9 @@
-import cv2
+from flask import Flask
 
-#Va a almacenar de la libreria cv2 el metodo siguiente, que es el que sirve para leer caras:
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +
-                                     'haarcascade_frontalface_default.xml')
-#haarcascade es el archivo con el que vamos a entrenar nuestra camara para que detecte rostros
+app = Flask(__name__)
 
-captura = cv2.VideoCapture(0) # El 0 es para conectarse a la primer camara disponible
+@app.route("/")
+def hello_world():
+    return "<p>Hola!</p>"
 
-while True:
-    retenido, frame = captura.read()
-    
-    print(frame)
+app.run(debug=True,port=5050)
